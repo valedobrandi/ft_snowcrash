@@ -1,0 +1,11 @@
+flag quif5eloekouj29ke0vouxean
+token 25749xKZ8L7DkSCwJkT9dyv6f
+ls -la
+
+getfacl ./level08
+
+getfacl token 
+
+ltrace ./level08
+
+printf("%s [file to read]\n", "./level08"./level08 [file to read])

