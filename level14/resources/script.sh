@@ -1,0 +1,1 @@
+find / -user flag14 2>/dev/null
