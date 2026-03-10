@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# --- Reconnaissance ---
+# The -la flags show permissions, ownership, and file sizes.
+# This helps identify any unusual files, SUID binaries, or hidden files
+# that might contain the flag or hint at the next step.
+
+# --- Find the Flag in /etc/passwd ---
+# /etc/passwd traditionally stored password hashes (before /etc/shadow).
+# In this wargame level, the flag/password hash is embedded in /etc/passwd.
+
+# --- Encrypted ---
+# The encrypted value retrieved from /etc/passwd is a DES crypt(3) hash.
+# This is the classic Unix password hash format — identified by its
+# 13-character length and use of [a-zA-Z0-9./] characters.
+
+# --- Crack the Hash with Hashcat ---
+# Hashcat is a GPU-accelerated password recovery tool.
+#
+# Flags explained:
+#   -m 1500   → Hash type: DES (crypt(3)), the old Unix password format
+#   -a 3      → Attack mode: Brute-force (mask attack)
+#   decoded.txt → Input file containing the hash to crack
+#   '?l?l?l?l?l?l?l' → Mask: exactly 7 lowercase letters (?l = [a-z])
+#   --show    → Don't re-crack; just display already-cracked results from the
+#               potfile (hashcat's cache of previously cracked hashes)
+#
+# WHY BRUTE-FORCE WITH THIS MASK?
+# The wargame hints that the password is 7 lowercase letters, making the
+# search space 26^7 = ~8 billion combinations — feasible for DES with a GPU.
+# A dictionary attack would work too, but the mask is more targeted here.

