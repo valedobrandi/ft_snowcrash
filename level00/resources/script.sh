@@ -4,19 +4,27 @@ ssh() {
     sshpass -p 'level00' ssh level00@localhost -p 2220 "$1"  
 }
 
-# Caesar cipher and ROT13 to crack the encoded password.
+ssh "ls -la"
 
-# Find files owned by user 'flag00' (potentially containing the password)
+read pause
+
 ssh "find / -user flag00 2>/dev/null"
 
-# Read the encrypted password from the binary file.
+read pause
+
+echo 'cat /usr/sbin/john...'
+
+read pause
+
+ssh "cat /usr/sbin/john"
+
 encrypt=$(ssh "cat /usr/sbin/john")
 
-echo "Encrypted password: $encrypt"
+read pause
 
+echo https://www.boxentriq.com/analysis/text-analysis
+echo https://www.boxentriq.com/ciphers/caesar-cipher
 
-# Function: caesar_cipher
-# Description: Applies a Caesar cipher shift to the input text.
 caesar_cipher() {
        local text="$1"
        local shift=$2
@@ -41,16 +49,10 @@ caesar_cipher() {
        echo "$output"
 }
 
-
-# Function: rot13
-# Description: Applies ROT13 (Caesar cipher with shift 13) to the input text.
 rot13() {
 	caesar_cipher "$1" 13
 }
 
-
-# Function: rot13_bruteforce
-# Description: Tries all Caesar cipher shifts (1-25) to brute-force decode the text.
 rot13_bruteforce() {
        local text="$1"
        for shift in {1..25}; do
@@ -59,14 +61,10 @@ rot13_bruteforce() {
        done
 }
 
-
-# Step 3: Apply Caesar cipher with shift 1 (as a first guess)
 step1=$(caesar_cipher "$encrypt" 1)
 
-# Step 4: Apply ROT13 to the result (common encoding in wargames)
 step2=$(rot13 "$step1")
 
-# Step 5: Brute-force all Caesar shifts on the result to find the correct password
 rot13_bruteforce "$step2" 
 
 sshpass -p "nottoohardhere" ssh flag00@localhost -p 2220 "getflag"

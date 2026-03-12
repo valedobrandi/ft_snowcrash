@@ -1,4 +1,4 @@
-**SnowCrash Level11 — Lua Server Command Injection**
+**Lua Server Command Injection**
 
 **What the service does**
 A Lua script runs as a persistent TCP server on port 5151, listening for password attempts. When a client connects it reads one line of input, passes it into a shell command to compute its SHA1 hash, then compares the result against a hardcoded hash. The shell command is built by string concatenation: `echo YOURINPUT | sha1sum` — with no sanitization of the input.

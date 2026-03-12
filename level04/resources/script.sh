@@ -10,7 +10,11 @@ ssh "ls -la"
 
 ssh 'getfacl ./level04.pl'
 
+read pause
+
 ssh "cat ./level04.pl"
+
+read pause
 
 # CGI reader content.
 # Acess with curl and pass the params

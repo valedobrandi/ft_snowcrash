@@ -12,7 +12,9 @@ ssh 'strings ./level10'
 
 ssh 'ltrace ./level10'
 
-ssh 'strace ./level10'
+ssh 'strace ./level10 /tmp/swap 127.0.0.1'
+
+read pause
 
 ssh 'bash -s' < swapper.sh
     

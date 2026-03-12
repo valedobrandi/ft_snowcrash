@@ -12,15 +12,15 @@ encrypted=42hDRfypTqqnw
 
 echo $encrypted > encrypted.txt
 
-./hashcat-7.1.2/hashcat.bin -m 1500 -a 3 encrypted.txt '?l?l?l?l?l?l?l'
+wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 
-./hashcat-7.1.2/hashcat.bin -m 1500 -a 3 encrypted.txt '?l?l?l?l?l?l?l' --show | awk -F: '{print $NF}' | tee decoded.txt
+sleep 5
 
-decoded=$(cat decoded.txt)
+./hashcat-7.1.2/hashcat.bin -m 1500 -a 0 encrypted.txt ../resources/rockyou.txt
 
-echo "Decoded password: $decoded"
+./hashcat-7.1.2/hashcat.bin -m 1500 -a 0 encrypted.txt ../resources/rockyou.txt --show
 
-sshpass -p "$decoded" ssh flag01@localhost -p 2220 "getflag" 
+# sshpass -p "$decoded" ssh flag01@localhost -p 2220 "getflag" 
 
 #Check flag.Here is your token : f2av5il02puano7naaf6adaaf
 

