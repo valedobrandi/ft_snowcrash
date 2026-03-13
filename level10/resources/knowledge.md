@@ -1,2 +1,2 @@
 The Exploit — TOCTOU Race Condition
-The binary checks file permission with access() and then reads it with open() as two separate steps. Between those two steps there is a tiny time window where the target can change.
+The level10 binary performs a file permission check using access() before opening the file. Because the file is opened after the check, an attacker can exploit a TOCTOU race condition by replacing the checked file with a symbolic link to the protected token. If the swap happens between the check and the open call, the program reads the token with flag10 privileges and sends it over the network.

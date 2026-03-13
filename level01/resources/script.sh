@@ -8,6 +8,7 @@ ssh "ls -la"
 
 ssh "cat /etc/passwd | grep flag01"
 
+#Hash Format 13-character string: 2 characters for salt + 11 for the hash.
 encrypted=42hDRfypTqqnw
 
 echo $encrypted > encrypted.txt

@@ -1,3 +1,2 @@
 The Exploit — PATH Hijacking
-A SUID binary runs with elevated privileges but resolves commands through the environment using /usr/bin/env. This means it searches $PATH left to right to find the command to execute.
-By creating a fake echo script in /tmp that runs getflag, then injecting /tmp at the front of $PATH, the binary finds and executes our version of echo instead of the real one — but still running with flag03's privileges.
+A SUID binary runs with elevated privileges but resolves commands through the environment using /usr/bin/env. This means it searches $PATH left to right to find the command to execute, by creating a fake echo script in /tmp that runs getflag, then injecting /tmp at the front of $PATH, the binary finds and executes our version of echo instead of the real one — but still running with flag03's privileges.

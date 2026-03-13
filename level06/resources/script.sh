@@ -9,7 +9,7 @@ ssh "ls -la"
 
 ssh "cat level06.php"
 
-ssh 'echo "hello" > /tmp/test; ./level06.php /tmp/test'
+ssh 'echo "hello" > /tmp/test; ./level06 /tmp/test'
 
 echo "preg_replace('/(\[x (.*)\])\/e', '', \$a);"
 

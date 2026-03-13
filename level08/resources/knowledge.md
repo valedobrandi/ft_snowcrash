@@ -1,0 +1,3 @@
+Exploit - symbolic link bypass
+
+The binary level08 is a setuid program owned by flag08, meaning it runs with flag08 privileges. It expects a filename as an argument and reads the file. Using ltrace, we see the program checks the filename with strstr("token", "token"). This means the program blocks access if the filename contains the word "token". However, the check only applies to the argument string, not the actual file being opened. To bypass this, we create a symbolic link with a different name pointing to the real token file

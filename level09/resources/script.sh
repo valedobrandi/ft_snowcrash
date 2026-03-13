@@ -18,8 +18,6 @@ encrypt=$(ssh 'cat token')
 
 echo "Encrypted password: $encrypt"
 
-echo "Encrypted password: $encrypt"
-
 echo $encrypt > token
 
 decrypted=$(python3 decrypt.py)

@@ -24,4 +24,8 @@ sleep 2
 
 ssh 'cat /tmp/f11'
 
+ps aux | grep lua
+#Password: 
+test; getflag > /tmp/flag
+
 # Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
